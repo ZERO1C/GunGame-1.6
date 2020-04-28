@@ -38,6 +38,7 @@ public class PlayerControl : MonoBehaviour
             anim.SetBool("isruning", true);
         }
     }
+
     private void Update()
     {
         isGrounded = Physics2D.OverlapCircle(feetPos.position, checkRadius, whatIsGround);
@@ -56,5 +57,12 @@ public class PlayerControl : MonoBehaviour
         }
 
     }
-    
+
+    private void OnTriggerEnter2D(Collider2D collision) 
+    {
+        if (collision.CompareTag("Kordon")) 
+        {
+            Destroy(gameObject);
+        }
+    }
 }

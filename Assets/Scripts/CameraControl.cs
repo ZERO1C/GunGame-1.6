@@ -37,6 +37,9 @@ public class CameraControl : MonoBehaviour
 
     void Update()
     {
+        if (player == null)
+            return;
+
         int currentX = Mathf.RoundToInt(player.position.x);
         if (currentX > lastX) isLeft = false; else if (currentX < lastX) isLeft = true;
         lastX = Mathf.RoundToInt(player.position.x);

@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class pol : MonoBehaviour
 {
-
-
-
-    
-    public float lifitime;
     public float distance;
     public LayerMask whatIsSolid;
 
@@ -17,10 +12,7 @@ public class pol : MonoBehaviour
         RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, -transform.up, distance, whatIsSolid);
         if (hitInfo.collider != null)
         {
-            
             Destroy(gameObject);
-
-
         }
         
     }
