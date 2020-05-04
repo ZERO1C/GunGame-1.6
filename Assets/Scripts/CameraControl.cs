@@ -35,7 +35,7 @@ public class CameraControl : MonoBehaviour
         }
     }
 
-    void Update()
+    void LateUpdate()
     {
         if (player == null)
             return;

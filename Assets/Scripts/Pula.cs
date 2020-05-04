@@ -10,8 +10,11 @@ public class Pula : MonoBehaviour
     public float speed;
     public float lifitime;
     public float distance;
-    public int damage;
+    public int tolkanX;
+    public int tolkanY;
     public LayerMask whatIsSolid;
+
+
    
     private void FixedUpdate()
     {
@@ -20,7 +23,8 @@ public class Pula : MonoBehaviour
         {
             if (hitInfo.collider.CompareTag("Enemy"))
             {
-                hitInfo.collider.GetComponent<Enemy>().TakeDamage(damage);
+                hitInfo.collider.GetComponent<Enemy>().TakeDamage(tolkanX, tolkanY);
+
             }
             Destroy(gameObject);
         }

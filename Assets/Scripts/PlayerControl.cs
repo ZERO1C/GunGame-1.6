@@ -7,10 +7,27 @@ public class PlayerControl : MonoBehaviour
     public float speed;
     public float jump;
     private float MoveInput;
-
+    
+   
     private Rigidbody2D rb;
 
-    private bool facingRight = true;
+    // Змінні часу для отдачі
+    private float timeBtwShots;
+    public float startTimeBtwShots;
+    private float time;
+    public float startTime;
+    // макс скорость
+    public float maxspeedx;
+    public float maxspeedy;
+
+
+    // Змінна отдачі
+    public float otdx;
+    public float otdy;
+
+
+
+
 
     private bool isGrounded;
     public Transform feetPos;
@@ -22,13 +39,19 @@ public class PlayerControl : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        
         anim = GetComponent<Animator>();
     }
     private void FixedUpdate()
     {
         MoveInput = Input.GetAxis("Horizontal");
-        rb.velocity = new Vector2(MoveInput * speed, rb.velocity.y);
-        
+        rb.velocity += new Vector2(MoveInput * speed, 0);
+        rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x, -maxspeedx, maxspeedx), Mathf.Clamp(rb.velocity.y, -maxspeedy, maxspeedy));
+
+        Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        float x = difference.x;
+        float y = difference.y;
+
         if (MoveInput == 0)
         {
             anim.SetBool("isruning", false);
@@ -37,6 +60,67 @@ public class PlayerControl : MonoBehaviour
         {
             anim.SetBool("isruning", true);
         }
+       
+
+        if (timeBtwShots <= 0)
+        {
+            if (Input.GetMouseButton(0))
+            {
+                
+                 
+                
+                    if (x > 0)
+                    {
+                        if(y>0)
+                        {
+                            rb.velocity += Vector2.left * otdx;
+                            rb.velocity += Vector2.down * otdy;
+
+                        }
+                        if (y < 0)
+                        {
+                            rb.velocity += Vector2.left * otdx;
+                            rb.velocity += Vector2.up * otdy;
+
+                        }
+
+                    
+                    }
+                        
+                    if (x < 0)
+                    {
+                        if (y > 0)
+                        {
+                            rb.velocity += Vector2.right * otdx;
+                            rb.velocity += Vector2.down * otdy;
+
+                        }
+                        if (y < 0)
+                        {
+                            rb.velocity += Vector2.right * otdx;
+                            rb.velocity += Vector2.up * otdy;
+
+                        }
+                   
+                    }
+                    
+                
+
+
+                timeBtwShots = startTimeBtwShots;
+
+
+
+
+            }
+        }
+        else
+        {
+            timeBtwShots -= Time.deltaTime;
+        }
+
+
+
     }
 
     private void Update()
@@ -44,7 +128,7 @@ public class PlayerControl : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(feetPos.position, checkRadius, whatIsGround);
         if(isGrounded == true && Input.GetKeyDown(KeyCode.Space))
         {
-            rb.velocity = Vector2.up * jump;
+            rb.velocity += Vector2.up * jump;
             anim.SetTrigger("takeof");
         }
         if(isGrounded == true)
@@ -55,7 +139,9 @@ public class PlayerControl : MonoBehaviour
         {
             anim.SetBool("isjumping", true);
         }
+        
 
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision) 
@@ -65,4 +151,7 @@ public class PlayerControl : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    
+
 }

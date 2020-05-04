@@ -8,6 +8,8 @@ public class Gun : MonoBehaviour
     public GameObject bullet;
     public Transform shotPoint;
 
+
+    private bool facingRight = true;
     private float timeBtwShots;
     public float startTimeBtwShots;
 
@@ -35,7 +37,29 @@ public class Gun : MonoBehaviour
             timeBtwShots -= Time.deltaTime;
         }
 
+        
+        float x = difference.x;
+        if (facingRight == true && x < 0)
+        {
+            Flip();
+        }
+        else if (facingRight == false && x > 0)
+        {
+            Flip();
+        }
+
+
 
 
     }
+    void Flip()
+    {
+        facingRight = !facingRight;
+        Vector3 Scaler = transform.localScale;
+        Scaler.y *= -1;
+        transform.localScale = Scaler;
+    }
+
+
+
 }

@@ -97,7 +97,8 @@ MonoBehaviour:
   speed: 15
   lifitime: 0.5
   distance: 0.5
-  damage: 1
+  tolkanX: 5
+  tolkanY: 5
   whatIsSolid:
     serializedVersion: 2
     m_Bits: 1792
