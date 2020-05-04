@@ -30,22 +30,11 @@ public class Gun_bot : MonoBehaviour
 
     void Update()
     {
-
-
-
-
-
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        if (player == null)
+            return;
         bot = GameObject.FindGameObjectWithTag("Enemy").transform;
-        int x = Mathf.RoundToInt(player.position.x) - Mathf.RoundToInt(bot.position.x);
-
-        //int playerx = Mathf.RoundToInt(player.position.x);
-        //int playery = Mathf.RoundToInt(player.position.y);
-
-
-        //Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-        //float rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
-        // transform.rotation = Quaternion.Euler(0f, 0f, rotZ + offset);
+        float x = player.position.x - bot.position.x;
 
         Quaternion rotation = Quaternion.LookRotation(Vector3.forward, player.position - bot.transform.position);
         transform.rotation = rotation;
@@ -54,7 +43,7 @@ public class Gun_bot : MonoBehaviour
         {
             Flip();
         }
-        else if (facingRight == false && x < 0)
+        else if (facingRight == false && x > 0)
         {
             Flip();
         }
@@ -65,7 +54,7 @@ public class Gun_bot : MonoBehaviour
     {
         facingRight = !facingRight;
         Vector3 Scaler = transform.localScale;
-        Scaler.y *= -1;
+        Scaler.x *= -1;
         transform.localScale = Scaler;
     }
 }
