@@ -25,7 +25,8 @@ public class PlayerControl : MonoBehaviour
     public float otdx;
     public float otdy;
 
-
+    private Transform player;
+    private Transform bot;
 
 
 
@@ -152,6 +153,49 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
-    
+    public void TakeDamage(int tolkanX, int tolkanY)
+    {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+        int playerX = Mathf.RoundToInt(player.position.x);
+        int playerY = Mathf.RoundToInt(player.position.y);
+
+        bot = GameObject.FindGameObjectWithTag("Enemy").transform;
+        int botX = Mathf.RoundToInt(bot.position.x);
+        int botY = Mathf.RoundToInt(bot.position.y);
+
+        int x = playerX - botX;
+        int y = playerY - botY;
+
+        if (x < 0)
+        {
+            if (y <= 0)
+            {
+                rb.velocity += Vector2.left * tolkanX;
+                rb.velocity += Vector2.down * tolkanY;
+            }
+            if (y > 0)
+            {
+                rb.velocity += Vector2.left * tolkanX;
+                rb.velocity += Vector2.up * tolkanY;
+            }
+        }
+        if (x > 0)
+        {
+            if (y <= 0)
+            {
+                rb.velocity += Vector2.right * tolkanX;
+                rb.velocity += Vector2.down * tolkanY;
+            }
+            if (y > 0)
+            {
+                rb.velocity += Vector2.right * tolkanX;
+                rb.velocity += Vector2.up * tolkanY;
+            }
+        }
+
+
+    }
+
+
 
 }

@@ -39,6 +39,16 @@ public class Gun_bot : MonoBehaviour
         Quaternion rotation = Quaternion.LookRotation(Vector3.forward, player.position - bot.transform.position);
         transform.rotation = rotation;
 
+        if (timeBtwShots <= 0)
+        {
+            Faer();
+            timeBtwShots = startTimeBtwShots;
+        }
+        else
+        {
+            timeBtwShots -= Time.deltaTime;
+        }
+
         if (facingRight == true && x < 0)
         {
             Flip();
@@ -56,5 +66,16 @@ public class Gun_bot : MonoBehaviour
         Vector3 Scaler = transform.localScale;
         Scaler.x *= -1;
         transform.localScale = Scaler;
+    }
+
+    void Faer()
+    {
+        if (timeBtwShots <= 0)
+        {
+            
+            Instantiate(bullet, shotPoint.position, transform.rotation);
+            
+        }
+        
     }
 }
