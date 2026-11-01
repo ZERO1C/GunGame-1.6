@@ -1,0 +1,51 @@
+{
+  "schema": 1,
+  "rulesVersion": 1,
+  "profileLabels": [
+    "Google Account",
+    "Google account",
+    "Account",
+    "Обліковий запис Google",
+    "Обліковий запис",
+    "Аккаунт Google",
+    "Аккаунт"
+  ],
+  "profileHints": [
+    "account",
+    "profile",
+    "avatar",
+    "photo",
+    "обліковий",
+    "акаунт"
+  ],
+  "manageAppsLabels": [
+    "Manage apps & device",
+    "Manage apps and device",
+    "Керування додатками й пристроєм",
+    "Керування додатками та пристроєм",
+    "Управление приложениями и устройством"
+  ],
+  "manageTabLabels": [
+    "Manage",
+    "Керувати",
+    "Керування",
+    "Управление"
+  ],
+  "deviceFilterLabels": [
+    "This device",
+    "Цей пристрій",
+    "На цьому пристрої",
+    "Это устройство"
+  ],
+  "notInstalledLabels": [
+    "Not installed",
+    "Не встановлено",
+    "Не встановлені",
+    "Не установлено"
+  ],
+  "maxMenuMisses": 6,
+  "maxScrolls": 180,
+  "relaunchPackages": [
+    "com.miui.home"
+  ]
+}
