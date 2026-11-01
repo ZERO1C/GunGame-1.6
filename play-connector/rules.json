@@ -1,10 +1,11 @@
 {
   "schema": 1,
-  "rulesVersion": 1,
+  "rulesVersion": 2,
   "profileLabels": [
     "Google Account",
     "Google account",
     "Account",
+    "Signed in as",
     "Обліковий запис Google",
     "Обліковий запис",
     "Аккаунт Google",
@@ -15,8 +16,13 @@
     "profile",
     "avatar",
     "photo",
+    "signed in",
+    "signed in as",
+    "gmail",
+    "email",
     "обліковий",
-    "акаунт"
+    "акаунт",
+    "профіль"
   ],
   "manageAppsLabels": [
     "Manage apps & device",
