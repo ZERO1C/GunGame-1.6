@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "rulesVersion": 2,
+  "rulesVersion": 3,
   "profileLabels": [
     "Google Account",
     "Google account",
@@ -53,5 +53,13 @@
   "maxScrolls": 180,
   "relaunchPackages": [
     "com.miui.home"
-  ]
+  ],
+  "profileTapX": 0.925,
+  "profileTapY": 0.085,
+  "scrollStartY": 0.80,
+  "scrollEndY": 0.32,
+  "tapDurationMs": 90,
+  "scrollDurationMs": 430,
+  "visualStepDelayMs": 850,
+  "ocrMinConfidence": 28.0
 }
